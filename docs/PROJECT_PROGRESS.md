@@ -31,8 +31,8 @@ The silicon parameter relations will follow the same cited model as Project 1. A
 - [x] Recover the original project selection and scope.
 - [x] Inspect Project 1 architecture, validation, packaging, CI and release lessons.
 - [x] Inspect the authenticated GitHub account; no duplicate Project 2 repository found.
-- [ ] Publish and verify this initial scaffold.
-- [ ] Implement and validate equilibrium electrostatics; publish milestone.
+- [x] Publish and verify the initial root scaffold on GitHub.
+- [x] Implement and validate equilibrium electrostatics (milestone publication in progress).
 - [ ] Implement and validate diode diagnostics; publish milestone.
 - [ ] Produce and visually inspect scientific figures and finish documentation.
 - [ ] Verify clean installed package, API, CLI, README commands and full tests.
@@ -41,10 +41,16 @@ The silicon parameter relations will follow the same cited model as Project 1. A
 
 ## Current state and validation
 
-The scope, license and package configuration are initialized. No scientific implementation or test results are claimed at this point. Reference review covers equilibrium Poisson–Boltzmann equations and the depletion approximation in MIT 6.012 lecture notes; material parameter provenance will be recorded before implementation.
+The silicon material model, analytical depletion profiles, conservative equilibrium solver and independent two-domain collocation reference are implemented. The model, units, contact conditions and references are documented in `MODEL.md`.
+
+Local milestone check: **28 tests pass** on Python 3.12, including the Project 1 silicon parameter reference, charge balance, mass action, bandgap consistency, discrete Gauss law, symmetric reflection, contact padding, independent collocation agreement and second-order potential convergence. Failure paths and invalid inputs are checked. No experimental validation is claimed.
+
+The default symmetric 300 K, 10¹⁶ cm⁻³ junction has Vbi = 0.7394037131 V. Its numerical peak field is about 4% below the depletion approximation. Strong doping asymmetry can give much larger differences because mobile charge near the interface is not negligible; the independent solution is the discretization benchmark.
+
+A wheel-install CI workflow is being published. Remote CI success has not yet been verified.
 
 ## Known issues / remaining tasks
 
-All scientific implementation and final QA remain. The first release is planned as `v0.1.0`. No release has been created.
+Diode fitting, CLI, examples, figures, full documentation and final QA remain. The first release is planned as `v0.1.0`. No release has been created.
 
-**Next action:** verify the initial GitHub scaffold, then implement the documented silicon model and equilibrium boundary-value solver with analytical and conservation tests.
+**Next action:** verify this electrostatics milestone on GitHub, then implement the separate diode fit and uncertainty diagnostics.
