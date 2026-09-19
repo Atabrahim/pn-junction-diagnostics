@@ -5,7 +5,38 @@ from numpy.typing import NDArray
 from scipy.constants import e
 from scipy.integrate import solve_bvp
 
-from .electrostatics import ConvergenceError, EquilibriumResult, depletion_profile
+from .electrostatics import ConvergenceError, EquilibriumResult, Junction, depletion_profile
+
+
+def interface_first_integral(junction: Junction) -> tuple[float, float]:
+    """Analytical Boltzmann interface potential (V) and signed field (V/m).
+
+    Integrating u'' once on each side and matching field yields the result
+    for semi-infinite neutral bulks. Unlike the depletion approximation,
+    this includes mobile charge. It is independent of both numerical solvers.
+    """
+    material = junction.material
+    left, right = junction.bulk_reduced_potentials
+    acceptors, donors = junction.acceptor_cm3, junction.donor_cm3
+    left_mobile = np.hypot(acceptors, 2 * material.intrinsic_cm3)
+    right_mobile = np.hypot(donors, 2 * material.intrinsic_cm3)
+    interface = (left_mobile - right_mobile + acceptors * left + donors * right) / (
+        acceptors + donors
+    )
+    integrated_density = (
+        2 * material.intrinsic_cm3 * np.cosh(interface)
+        - left_mobile
+        + acceptors * (interface - left)
+    )
+    field = -np.sqrt(
+        2
+        * e
+        * 1e6
+        * material.thermal_voltage_V
+        * integrated_density
+        / material.permittivity_F_m
+    )
+    return material.thermal_voltage_V * (interface - left), float(field)
 
 
 def collocation_potential(result: EquilibriumResult, tolerance: float = 1e-7) -> NDArray:
