@@ -13,6 +13,9 @@ license-files = ["LICENSE"]
 authors = [{name = "Morad Atabrahim"}]
 dependencies = ["numpy>=1.26", "scipy>=1.11"]
 
+[project.scripts]
+pn-junction = "pn_junction.cli:main"
+
 [project.optional-dependencies]
 plots = ["matplotlib>=3.8"]
 dev = ["pytest>=8", "ruff>=0.9", "build>=1.2", "matplotlib>=3.8"]
