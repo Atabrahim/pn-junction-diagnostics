@@ -1,0 +1,15 @@
+{
+  "data_type": "SYNTHETIC DATA, not experimental measurements",
+  "generator": "examples/reproduce.py; NumPy default_rng, seed 2026",
+  "truth_parameters": {
+    "saturation_current_A": 1e-11,
+    "ideality_factor": 1.6,
+    "series_resistance_ohm": 5.0,
+    "temperature_K": 300.0
+  },
+  "observation_model": "exact current; additive independent Gaussian voltage noise",
+  "sigma_voltage_V": 0.0015,
+  "sample_count": 100,
+  "license": "MIT; generated within this repository; no external raw data",
+  "preprocessing": "none"
+}
