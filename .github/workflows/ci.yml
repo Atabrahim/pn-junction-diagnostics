@@ -43,3 +43,11 @@ jobs:
       - name: Verify API outside the checkout
         working-directory: ${{ runner.temp }}
         run: python -c "from pn_junction import solve_equilibrium; result = solve_equilibrium(); assert result.scaled_residual < 1e-9; print(result.junction.built_in_voltage_V)"
+      - name: Verify CLI outside the checkout
+        working-directory: ${{ runner.temp }}
+        run: |
+          pn-junction --version
+          pn-junction simulate --output junction.csv
+          pn-junction fit "${{ github.workspace }}/data/synthetic_diode.csv" --output diode-fit.json
+      - name: Reproduce scientific figures and numerical checks
+        run: python examples/reproduce.py --output outputs/ci-reproduced
