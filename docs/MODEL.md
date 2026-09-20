@@ -73,6 +73,18 @@ An analytic tridiagonal Jacobian, SciPy's banded linear solve and damped Newton 
 
 An independent validation uses SciPy `solve_bvp`: each side is mapped to a unit interval and the four-state system enforces both contact values plus continuity of potential and field at the interface. This handles the doping discontinuity explicitly instead of smoothing it. It shares the physical model but not the finite-volume/Newton implementation.
 
+### A second independent check: the full-Boltzmann first integral
+
+For semi-infinite neutral contacts, multiply the differential equation by $du/dx$ and integrate once on each side. Set $S_L=2n_i\cosh u_L$ and $S_R=2n_i\cosh u_R$, both in cm⁻³. Matching field at the interface gives
+
+$$u_0=\frac{S_L-S_R+N_Au_L+N_Du_R}{N_A+N_D},$$
+$$E_0=-\sqrt{\frac{2q10^6V_T}{\varepsilon}
+\left[2n_i\cosh u_0-S_L+N_A(u_0-u_L)\right]}.$$
+
+Here $u_0$ is the dimensionless interface potential and $E_0$ is the signed field in V/m. The bracket is a density in cm⁻³. The left-referenced interface potential is $V_T(u_0-u_L)$ V. These analytical relations retain mobile charge; they are **not** the depletion approximation. Small numerical differences arise from mesh spacing and finite contact placement.
+
+On the lightly doped side close to a strongly asymmetric interface, mobile charge can compete with or exceed fixed dopant charge. An accurately solved Poisson–Boltzmann model can therefore differ substantially from the depletion approximation, especially in interface field. Mesh refinement removes discretization error; it cannot remove different physical assumptions. The second-order convergence claim concerns potential. Differentiation at the abrupt interface gives slower field convergence, which is checked separately.
+
 ## Separate compact diode model
 
 For forward bias, assume a single ideality factor $\eta$, saturation current $I_s$ (A), series resistance $R_s$ (Ω) and known uniform $T$:

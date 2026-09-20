@@ -1,0 +1,339 @@
+{
+  "classification": "MODEL VERIFICATION; SYNTHETIC RECOVERY; no experimental validation",
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2"
+  },
+  "default_junction": {
+    "built_in_voltage_V": 0.7394037130950345,
+    "analytical_depletion_width_m": 4.373034547511756e-07,
+    "numerical_peak_field_V_m": 3247572.1983679384,
+    "analytical_depletion_peak_field_V_m": 3381650.453759864
+  },
+  "electrostatic_cases": [
+    {
+      "acceptor_cm3": 1e+16,
+      "donor_cm3": 1e+16,
+      "temperature_K": 250,
+      "nodes": 3201,
+      "collocation_max_error_V": 6.66040042007765e-08,
+      "first_integral_interface_error_V": 0.0,
+      "first_integral_field_relative_error": 0.0009423216984721927,
+      "scaled_residual": 5.210215592299505e-11,
+      "gauss_error_C_m2": 6.071898721030904e-18,
+      "passed": true
+    },
+    {
+      "acceptor_cm3": 100000000000000.0,
+      "donor_cm3": 1e+17,
+      "temperature_K": 250,
+      "nodes": 3201,
+      "collocation_max_error_V": 9.859220261243529e-05,
+      "first_integral_interface_error_V": 9.859220500574306e-05,
+      "first_integral_field_relative_error": 0.0004813189978853938,
+      "scaled_residual": 1.1150003697299547e-10,
+      "gauss_error_C_m2": 4.0833872681895555e-17,
+      "passed": true
+    },
+    {
+      "acceptor_cm3": 1e+17,
+      "donor_cm3": 100000000000000.0,
+      "temperature_K": 250,
+      "nodes": 3201,
+      "collocation_max_error_V": 9.859220261251855e-05,
+      "first_integral_interface_error_V": 9.85922050058402e-05,
+      "first_integral_field_relative_error": 0.0004813189979083754,
+      "scaled_residual": 1.1150219257020227e-10,
+      "gauss_error_C_m2": -2.580151196534387e-17,
+      "passed": true
+    },
+    {
+      "acceptor_cm3": 1e+16,
+      "donor_cm3": 1e+16,
+      "temperature_K": 300,
+      "nodes": 3201,
+      "collocation_max_error_V": 6.529742208050138e-08,
+      "first_integral_interface_error_V": 0.0,
+      "first_integral_field_relative_error": 0.0010509249280745703,
+      "scaled_residual": 2.9223568009939527e-11,
+      "gauss_error_C_m2": -6.6718068775162834e-18,
+      "passed": true
+    },
+    {
+      "acceptor_cm3": 100000000000000.0,
+      "donor_cm3": 1e+17,
+      "temperature_K": 300,
+      "nodes": 3201,
+      "collocation_max_error_V": 0.00010439265520001406,
+      "first_integral_interface_error_V": 0.00010439265797801411,
+      "first_integral_field_relative_error": 0.000905856819870543,
+      "scaled_residual": 1.1832305990035208e-10,
+      "gauss_error_C_m2": -5.0830891360719504e-17,
+      "passed": true
+    },
+    {
+      "acceptor_cm3": 1e+17,
+      "donor_cm3": 100000000000000.0,
+      "temperature_K": 300,
+      "nodes": 3201,
+      "collocation_max_error_V": 0.00010439265520000712,
+      "first_integral_interface_error_V": 0.00010439265797794473,
+      "first_integral_field_relative_error": 0.0009058568205315698,
+      "scaled_residual": 1.1832305990035208e-10,
+      "gauss_error_C_m2": 9.434473161997459e-17,
+      "passed": true
+    },
+    {
+      "acceptor_cm3": 1e+16,
+      "donor_cm3": 1e+16,
+      "temperature_K": 400,
+      "nodes": 3201,
+      "collocation_max_error_V": 5.414160729466655e-08,
+      "first_integral_interface_error_V": 0.0,
+      "first_integral_field_relative_error": 0.0013333875567153042,
+      "scaled_residual": 3.402877589084308e-11,
+      "gauss_error_C_m2": 1.8680538601862067e-17,
+      "passed": true
+    },
+    {
+      "acceptor_cm3": 100000000000000.0,
+      "donor_cm3": 1e+17,
+      "temperature_K": 400,
+      "nodes": 3201,
+      "collocation_max_error_V": 0.00011176906925697283,
+      "first_integral_interface_error_V": 0.000111769072782264,
+      "first_integral_field_relative_error": 0.0015456761812435715,
+      "scaled_residual": 6.275752140183499e-11,
+      "gauss_error_C_m2": -2.304539024274543e-13,
+      "passed": true
+    },
+    {
+      "acceptor_cm3": 1e+17,
+      "donor_cm3": 100000000000000.0,
+      "temperature_K": 400,
+      "nodes": 3201,
+      "collocation_max_error_V": 0.00011176906925697977,
+      "first_integral_interface_error_V": 0.00011176907278228482,
+      "first_integral_field_relative_error": 0.0015456761812043807,
+      "scaled_residual": 5.5558096019809114e-11,
+      "gauss_error_C_m2": 2.304942692512149e-13,
+      "passed": true
+    }
+  ],
+  "mesh_studies": [
+    {
+      "label": "Na = Nd = 10\u00b9\u2076 cm\u207b\u00b3",
+      "cells_per_side": [
+        100,
+        200,
+        400,
+        800
+      ],
+      "error_V": [
+        1.67137911439158e-05,
+        4.176107815487273e-06,
+        1.0443572335955276e-06,
+        2.611022811294106e-07
+      ],
+      "last_refinement_ratio": 3.9998012620882117
+    },
+    {
+      "label": "Na = 10\u00b9\u2075, Nd = 10\u00b9\u2077 cm\u207b\u00b3",
+      "cells_per_side": [
+        100,
+        200,
+        400,
+        800
+      ],
+      "error_V": [
+        0.0022169348485326923,
+        0.0006560413991081315,
+        0.00017367581545180144,
+        4.4121684301901e-05
+      ],
+      "last_refinement_ratio": 3.9362916035442135
+    }
+  ],
+  "asymmetry_study": [
+    {
+      "donor_acceptor_ratio": 1.0,
+      "numerical_field_ratio": 0.9458696495475999,
+      "first_integral_field_ratio": 0.9470334996553276
+    },
+    {
+      "donor_acceptor_ratio": 2.154434690031884,
+      "numerical_field_ratio": 0.9479599677542566,
+      "first_integral_field_ratio": 0.9491938163258278
+    },
+    {
+      "donor_acceptor_ratio": 4.641588833612778,
+      "numerical_field_ratio": 0.9513475394542964,
+      "first_integral_field_ratio": 0.952832006615416
+    },
+    {
+      "donor_acceptor_ratio": 10.0,
+      "numerical_field_ratio": 0.9670465475492928,
+      "first_integral_field_ratio": 0.9689897222531569
+    },
+    {
+      "donor_acceptor_ratio": 21.544346900318832,
+      "numerical_field_ratio": 1.0268796761263232,
+      "first_integral_field_ratio": 1.0295356758275582
+    },
+    {
+      "donor_acceptor_ratio": 46.41588833612777,
+      "numerical_field_ratio": 1.17691932285532,
+      "first_integral_field_ratio": 1.1805995596743994
+    },
+    {
+      "donor_acceptor_ratio": 100.0,
+      "numerical_field_ratio": 1.4653476030941806,
+      "first_integral_field_ratio": 1.4703846784315524
+    },
+    {
+      "donor_acceptor_ratio": 215.44346900318823,
+      "numerical_field_ratio": 1.9463162090768655,
+      "first_integral_field_ratio": 1.952851985259449
+    },
+    {
+      "donor_acceptor_ratio": 464.15888336127773,
+      "numerical_field_ratio": 2.6934456856076125,
+      "first_integral_field_ratio": 2.7006465630931533
+    },
+    {
+      "donor_acceptor_ratio": 1000.0,
+      "numerical_field_ratio": 3.816299551532353,
+      "first_integral_field_ratio": 3.8197597069131266
+    }
+  ],
+  "diode_fit": {
+    "result_type": "NUMERICAL FIT; input provenance is supplied by the user",
+    "measurement_model": "controlled current; known independent Gaussian voltage errors",
+    "parameters": {
+      "saturation_current_A": 9.947409092598245e-12,
+      "ideality_factor": 1.5997889375949013,
+      "series_resistance_ohm": 4.938152118191656,
+      "temperature_K": 300.0
+    },
+    "parameter_order": [
+      "saturation_current_A",
+      "ideality_factor",
+      "series_resistance_ohm"
+    ],
+    "standard_errors": [
+      1.1379560577933645e-13,
+      0.0014321263956883763,
+      0.0517107392150004
+    ],
+    "covariance": [
+      [
+        1.294943989468615e-26,
+        1.5338765360637892e-16,
+        -2.532285726428594e-15
+      ],
+      [
+        1.5338765360637892e-16,
+        2.0509860132273795e-06,
+        -4.1434833679131415e-05
+      ],
+      [
+        -2.532285726428594e-15,
+        -4.1434833679131415e-05,
+        0.00267400055016178
+      ]
+    ],
+    "correlation": [
+      [
+        1.0,
+        0.9412035630707529,
+        -0.43033480108670075
+      ],
+      [
+        0.9412035630707529,
+        0.9999999999999998,
+        -0.5595043976940633
+      ],
+      [
+        -0.43033480108670075,
+        -0.5595043976940633,
+        1.0
+      ]
+    ],
+    "reduced_chi_square": 1.0446278496487813,
+    "scaled_jacobian_condition": 6.932619057210036,
+    "warnings": []
+  },
+  "parameter_recovery_standard_errors": [
+    0.4621523567767184,
+    0.14737693944770613,
+    1.1960355382118164
+  ],
+  "limited_current_fit": {
+    "result_type": "NUMERICAL FIT; input provenance is supplied by the user",
+    "measurement_model": "controlled current; known independent Gaussian voltage errors",
+    "parameters": {
+      "saturation_current_A": 1.0155223226873448e-11,
+      "ideality_factor": 1.6034567593685645,
+      "series_resistance_ohm": 97.52316998109829,
+      "temperature_K": 300.0
+    },
+    "parameter_order": [
+      "saturation_current_A",
+      "ideality_factor",
+      "series_resistance_ohm"
+    ],
+    "standard_errors": [
+      3.3441196837512574e-13,
+      0.007380298678126213,
+      1736.9643679208918
+    ],
+    "covariance": [
+      [
+        1.118313645925261e-25,
+        2.4162912139248747e-15,
+        -4.0860259763091163e-10
+      ],
+      [
+        2.4162912139248747e-15,
+        5.446880857835152e-05,
+        -10.093838803092202
+      ],
+      [
+        -4.0860259763091163e-10,
+        -10.093838803092202,
+        3017045.2154268236
+      ]
+    ],
+    "correlation": [
+      [
+        1.0,
+        0.9790244200474808,
+        -0.7034421729495858
+      ],
+      [
+        0.9790244200474808,
+        0.9999999999999999,
+        -0.7873929418788973
+      ],
+      [
+        -0.7034421729495858,
+        -0.7873929418788973,
+        1.0000000000000002
+      ]
+    ],
+    "reduced_chi_square": 0.6866642123585528,
+    "scaled_jacobian_condition": 14.087621880792106,
+    "warnings": [
+      "Series resistance is weakly constrained by this current range."
+    ]
+  },
+  "acceptance": {
+    "max_potential_error_V": 0.00025,
+    "max_interface_field_relative_error": 0.005,
+    "parameter_recovery_max_standard_errors": 3.0,
+    "minimum_last_mesh_refinement_ratio": 3.5
+  },
+  "passed": true
+}

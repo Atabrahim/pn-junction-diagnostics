@@ -1,6 +1,6 @@
 # Project progress
 
-Updated: 2026-09-19. This file is the continuity record; inspect it and the current GitHub tree before resuming work.
+Updated: 2026-09-20. This file is the continuity record; inspect it and the current GitHub tree before resuming work.
 
 ## Original objectives and fixed first-release scope
 
@@ -33,9 +33,10 @@ The silicon parameter relations will follow the same cited model as Project 1. A
 - [x] Inspect the authenticated GitHub account; no duplicate Project 2 repository found.
 - [x] Publish and verify the initial root scaffold on GitHub.
 - [x] Implement, validate and publish equilibrium electrostatics, scientific tests and model documentation.
-- [x] Implement and validate diode diagnostics (milestone publication in progress).
-- [ ] Produce and visually inspect scientific figures and finish documentation.
-- [ ] Verify clean installed package, API, CLI, README commands and full tests.
+- [x] Implement, validate and publish diode diagnostics and its 24 scientific/software tests.
+- [x] Implement CLI, reproduce all three scientific figures and inspect their raster renders.
+- [x] Write README, model derivation, data provenance, validation and learning notes.
+- [x] Build sdist/wheel and verify the wheel in a fresh environment: API, CLI, example and full tests.
 - [ ] Verify GitHub Actions on supported Python versions.
 - [ ] Publish a versioned release from the verified commit.
 
@@ -43,16 +44,18 @@ The silicon parameter relations will follow the same cited model as Project 1. A
 
 The silicon material model, analytical depletion profiles, conservative equilibrium solver and independent two-domain collocation reference are implemented. The model, units, contact conditions and references are documented in `MODEL.md`.
 
-Local milestone check: **52 tests pass** on Python 3.12. The original 28 tests cover the Project 1 silicon parameter reference, charge balance, mass action, bandgap consistency, discrete Gauss law, symmetric reflection, contact padding, independent collocation agreement and second-order potential convergence. The additional 24 cover implicit diode inversion, the Shockley limit, noiseless recovery at three temperatures, noisy parameter recovery, covariance scaling, weak resistance identifiability, rank deficiency, active bounds and invalid inputs. Ruff and formatting checks pass. No experimental validation is claimed.
+The scientific milestones passed 52 tests: 28 electrostatics tests and 24 diode tests. The completed implementation now passes **61 tests**, adding three full-Boltzmann first-integral checks and six CLI checks. Ruff and formatting checks pass, including the README Python example. No experimental validation is claimed.
 
 The separate diode API is implemented. For seed 2026 synthetic voltage noise (sigma = 1.5 mV, 100 controlled currents from 1 nA to 20 mA), the fit gives Is = 9.947409e-12 A, eta = 1.599789, Rs = 4.938152 ohm and reduced chi-square = 1.044628. Truth is (1e-11 A, 1.6, 5 ohm); all recovered values are within three local standard errors. Absolute voltage uncertainties are supplied, not estimated from the residuals.
 
 The default symmetric 300 K, 10¹⁶ cm⁻³ junction has Vbi = 0.7394037131 V. Its numerical peak field is about 4% below the depletion approximation. Strong doping asymmetry can give much larger differences because mobile charge near the interface is not negligible; the independent solution is the discretization benchmark.
 
-A wheel-install CI workflow is published. Remote CI success has not yet been verified.
+A wheel-install CI workflow is published and its earlier runs succeeded. The final workflow adds CLI and full example reproduction; its latest-commit run is still to be verified.
 
 ## Known issues / remaining tasks
 
-CLI, examples, figures, full documentation and final QA remain. The first release is planned as `v0.1.0`. No release has been created. The interrupted upload was recovered from intact local files; no scientific work was lost.
+The source modules, final tests, reproducible example, synthetic data and scientific figures are published. Complete documentation and the expanded CI workflow are being published. **61 tests pass**, with zero failures/skips, both locally and from a clean wheel installation. Ruff and formatting pass. Nine independent electrostatics cases pass (worst potential error 0.112 mV, interface-field error 0.155%). Three figures were visually inspected. The clean installed package reproduces the committed synthetic CSV/metadata and all three PNGs byte for byte.
 
-**Next action:** verify this diode milestone on GitHub, then add reproducible CLI/examples/figures and complete release QA.
+The sdist and wheel build successfully; distribution contents and relative documentation links are checked. The README Python example, both CLI workflows and reproduction example work outside the checkout using the installed wheel. Remaining: finish documentation/CI publication, verify final GitHub CI and repository presentation, execute fresh-clone installation instructions and create `v0.1.0`. No release has been created. No scientific work was lost across interruptions.
+
+**Next action:** finish documentation/CI publication, verify the remote tree and latest CI, then publish the release. No additional features are required.
