@@ -12,7 +12,15 @@ from pn_junction import (
     silicon,
     solve_equilibrium,
 )
-from pn_junction.validation import collocation_potential
+from pn_junction.validation import collocation_potential, interface_first_integral
+
+
+@pytest.mark.parametrize("junction", [Junction(), Junction(1e14, 1e17), Junction(1e17, 1e14)])
+def test_mobile_charge_first_integral_including_strong_asymmetry(junction):
+    result = solve_equilibrium(junction, cells_per_side=1600)
+    potential, field = interface_first_integral(junction)
+    assert result.potential_V[1600] == pytest.approx(potential, abs=2e-4)
+    assert result.field_V_m[1600] == pytest.approx(field, rel=0.005)
 
 
 def test_silicon_matches_project_one_parameter_reference():
