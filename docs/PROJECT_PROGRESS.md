@@ -37,8 +37,8 @@ The silicon parameter relations will follow the same cited model as Project 1. A
 - [x] Implement CLI, reproduce all three scientific figures and inspect their raster renders.
 - [x] Write README, model derivation, data provenance, validation and learning notes.
 - [x] Build sdist/wheel and verify the wheel in a fresh environment: API, CLI, example and full tests.
-- [ ] Verify GitHub Actions on supported Python versions.
-- [ ] Publish a versioned release from the verified commit.
+- [x] Verify expanded GitHub Actions on Linux Python 3.11–3.13 and Windows Python 3.12.
+- [x] Complete all implementation and release-preparation gates. Version: `0.1.0`.
 
 ## Current state and validation
 
@@ -50,12 +50,23 @@ The separate diode API is implemented. For seed 2026 synthetic voltage noise (si
 
 The default symmetric 300 K, 10¹⁶ cm⁻³ junction has Vbi = 0.7394037131 V. Its numerical peak field is about 4% below the depletion approximation. Strong doping asymmetry can give much larger differences because mobile charge near the interface is not negligible; the independent solution is the discretization benchmark.
 
-A wheel-install CI workflow is published and its earlier runs succeeded. The final workflow adds CLI and full example reproduction; its latest-commit run is still to be verified.
+The expanded wheel-install CI passed all four jobs on commit `8b1f9936927aa2955499342dc9400fe78adbf878` ([run 35481869943](https://github.com/Atabrahim/pn-junction-diagnostics/actions/runs/35481869943)). It builds distributions, installs the wheel, runs tests and Ruff, exercises API/CLI outside the checkout and reproduces all scientific results. Subsequent release-record edits do not change scientific code; the publication procedure also checks their latest CI run.
 
-## Known issues / remaining tasks
+## Final implementation and QA status
 
-The source modules, final tests, reproducible example, synthetic data and scientific figures are published. Complete documentation and the expanded CI workflow are being published. **61 tests pass**, with zero failures/skips, both locally and from a clean wheel installation. Ruff and formatting pass. Nine independent electrostatics cases pass (worst potential error 0.112 mV, interface-field error 0.155%). Three figures were visually inspected. The clean installed package reproduces the committed synthetic CSV/metadata and all three PNGs byte for byte.
+**Original agreed scope: complete.** All 33 intended project files are published and the fetched GitHub tree was compared with the local contents. No model or software features remain to implement.
 
-The sdist and wheel build successfully; distribution contents and relative documentation links are checked. The README Python example, both CLI workflows and reproduction example work outside the checkout using the installed wheel. Remaining: finish documentation/CI publication, verify final GitHub CI and repository presentation, execute fresh-clone installation instructions and create `v0.1.0`. No release has been created. No scientific work was lost across interruptions.
+- 61 tests pass, zero failures/skips, with warnings treated as errors.
+- Ruff lint and formatting pass, including the README Python example.
+- Nine independent electrostatics cases pass: worst potential discrepancy 0.112 mV; worst interface-field discrepancy 0.155%.
+- Three scientific figures were inspected visually; the installed wheel reproduces the committed synthetic CSV/metadata and three PNGs byte for byte.
+- Sdist and wheel build; distribution contents and documentation links are checked.
+- A fresh wheel installation passes API, CLI, example and all 61 tests outside the checkout.
+- A fresh GitHub clone passes the README installation, CLI, reproduction, test, lint, formatting and build commands.
+- GitHub presentation was inspected: the preview loads correctly, the description is current, and model/data limitations are explicit.
 
-**Next action:** finish documentation/CI publication, verify the remote tree and latest CI, then publish the release. No additional features are required.
+## Known issues and next action
+
+No known release-blocking scientific or software issues remain. Documented physical limitations, synthetic-only observations and conditional fit uncertainties remain intentional limitations of this release.
+
+The official publication record is the [v0.1.0 GitHub release](https://github.com/Atabrahim/pn-junction-diagnostics/releases/tag/v0.1.0) and its tag. This file records the completed pre-release gates: on resuming, inspect that release/tag and the latest CI before attempting any publication. If the release is present and verified, Project 2 is finished; do not restart development. If absent, publish it from the verified commit. No additional features or Project 3 work are required here.
